@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject bullet;
     public Transform firePoint;
 
+    TextMeshPro bullets;
+
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.visible = false;
-        
+        bullets = GameObject.Find("Bullets").GetComponent<TextMeshPro>();  
     }
 
     // Update is called once per frame
@@ -28,6 +31,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
+        }
+        if (int.Parse(bullets.text) < 0)
+        {
+            Destroy(gameObject);
         }
     }
 

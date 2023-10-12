@@ -4,24 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MeteorScript : MonoBehaviour
 {
     public float speed;
     float timer;
 
-    public Text points;
+    TextMeshPro points;
     int Points;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnPointQ();
+        points = GameObject.Find("Points").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         transform.position = Vector3.MoveTowards(transform.position, Vector2.zero, speed * Time.deltaTime);
 
         timer += Time.deltaTime;
@@ -71,8 +74,9 @@ public class MeteorScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Bullet"))
         {
-            //Points++;
-            //points.text = Points.ToString();
+            Points = int.Parse(points.text);
+            Points += 1;
+            points.text = Points.ToString();
             Destroy(gameObject);
         }
 

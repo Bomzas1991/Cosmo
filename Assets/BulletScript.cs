@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BulletScript : MonoBehaviour
 {
-    public float speed = 1;
+    public float speed;
 
-    int Points;
+    TextMeshPro bulletsLeft;
+    int bullet;
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletsLeft = GameObject.Find("Bullets").GetComponent<TextMeshPro>();
         
+        bullet = int.Parse(bulletsLeft.text);
+        bullet -= 1;
+        bulletsLeft.text = bullet.ToString();
     }
 
     // Update is called once per frame
@@ -30,8 +36,10 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
+            bullet = int.Parse(bulletsLeft.text);
+            bullet += 1;
+            bulletsLeft.text = bullet.ToString();
             Destroy(gameObject);
-            Points += 1;
         }
     }
 }
