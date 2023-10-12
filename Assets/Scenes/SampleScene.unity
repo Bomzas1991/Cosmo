@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.13, y: 2.04}
+  m_AnchoredPosition: {x: 7.48, y: 2.39}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1363117285
@@ -667,8 +667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4853aa563bf43064d996d2ba9e478792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7431095769985773922, guid: c3ae3e224180a694c81d19a2c2ed9a7d, type: 3}
+  bullet: {fileID: 7251493446894273195, guid: f3217b3ce20a5ef4ea26ec60ef048f03, type: 3}
   firePoint: {fileID: 727028612}
+  Death: {fileID: 8300000, guid: 0a238be7cc049ff4f845c632312342bb, type: 3}
 --- !u!61 &1430809140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -883,7 +884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.13, y: 3.54}
+  m_AnchoredPosition: {x: 7.48, y: 3.89}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1579623535

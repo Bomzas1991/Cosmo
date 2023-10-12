@@ -11,6 +11,10 @@ public class BulletScript : MonoBehaviour
     TextMeshPro bulletsLeft;
     int bullet;
 
+    public AudioClip LaserBullet;
+    //public Animation Hit;
+    public GameObject BulletHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,10 @@ public class BulletScript : MonoBehaviour
         bullet = int.Parse(bulletsLeft.text);
         bullet -= 1;
         bulletsLeft.text = bullet.ToString();
+
+        //Hit = gameObject.GetComponent<Animation>();
+
+        AudioSource.PlayClipAtPoint(LaserBullet, transform.position, 1);
     }
 
     // Update is called once per frame
@@ -39,7 +47,11 @@ public class BulletScript : MonoBehaviour
             bullet = int.Parse(bulletsLeft.text);
             bullet += 1;
             bulletsLeft.text = bullet.ToString();
-            Destroy(gameObject);
+            //Hit.Play("BlueBulletHit");
+
+            Instantiate(BulletHit, transform.position, transform.rotation);
+
         }
+            Destroy(gameObject);
     }
 }

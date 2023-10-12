@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     TextMeshPro bullets;
 
+    public AudioClip Death;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
+            AudioSource.PlayClipAtPoint(Death, transform.position, 1);
+
             Destroy(gameObject);
         }
     }
