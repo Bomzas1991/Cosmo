@@ -71,9 +71,9 @@ public class MeteorScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Bullet"))
         {
+            //Points++;
+            //points.text = Points.ToString();
             Destroy(gameObject);
-            Points++;
-            points.text = Points.ToString();
         }
 
         if (collision.gameObject.tag.Contains("Player"))
