@@ -12,6 +12,7 @@ public class MeteorSpawnerScript : MonoBehaviour
     public GameObject meteor1;
     public GameObject meteor2;
     public GameObject meteor3;
+    public GameObject meteorBounce;
 
     void Update()
     {
@@ -36,6 +37,12 @@ public class MeteorSpawnerScript : MonoBehaviour
             {
                 Spawn3();
                 timer = 0;
+
+                if (timeSpawn >= 5)
+                {
+                    Spawn4();
+                    timeSpawn = 0;
+                }
             }
         }
 
@@ -66,5 +73,9 @@ public class MeteorSpawnerScript : MonoBehaviour
     void Spawn3()
     {
         Instantiate(meteor3, transform.position, transform.rotation);
+    }
+    void Spawn4()
+    {
+        Instantiate(meteorBounce, transform.position, transform.rotation);
     }
 }

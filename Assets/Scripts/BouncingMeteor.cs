@@ -40,7 +40,7 @@ public class BouncingMeteor : MonoBehaviour
         if (damage <= 0)
         {
             Points = int.Parse(points.text);
-            Points += 1;
+            Points += 3;
             points.text = Points.ToString();
 
             Destroy(gameObject);

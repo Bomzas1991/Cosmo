@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip Death;
 
+    public GameObject End;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (int.Parse(bullets.text) < 0)
         {
             Destroy(gameObject);
+            End.SetActive(true);
         }
     }
 
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(Death, transform.position, 1);
 
             Destroy(gameObject);
+
+            End.SetActive(true);
         }
     }
 }
