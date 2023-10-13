@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
-            AudioSource.PlayClipAtPoint(Death, transform.position, 3);
+            AudioSource.PlayClipAtPoint(Death, transform.position, 5);
             Instantiate(Explosion, transform.position, transform.rotation);
 
             Destroy(gameObject);

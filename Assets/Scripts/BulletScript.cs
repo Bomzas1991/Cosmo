@@ -15,6 +15,7 @@ public class BulletScript : MonoBehaviour
     //public Animation Hit;
     public GameObject BulletHit;
     public float bounce = 20f;
+    public AudioClip Death;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,9 @@ public class BulletScript : MonoBehaviour
             bulletsLeft.text = bullet.ToString();
             //Hit.Play("BlueBulletHit");
 
+            AudioSource.PlayClipAtPoint(Death, transform.position, 2);
             Instantiate(BulletHit, transform.position, transform.rotation);
+
 
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
         }

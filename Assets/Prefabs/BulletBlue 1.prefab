@@ -103,6 +103,7 @@ MonoBehaviour:
   LaserBullet: {fileID: 8300000, guid: 5b7d6f444db6f704d9d80feedb6c8f43, type: 3}
   BulletHit: {fileID: 5801107118113888801, guid: cff58f08e79bb584fab339ee32864bb3, type: 3}
   bounce: 1
+  Death: {fileID: 8300000, guid: 0a238be7cc049ff4f845c632312342bb, type: 3}
 --- !u!95 &3449941547181380770
 Animator:
   serializedVersion: 5
