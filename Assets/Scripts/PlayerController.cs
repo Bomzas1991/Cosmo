@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour
     public GameObject Explosion;
     public GameObject End;
 
+    public GameObject Heart;
+
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.visible = false;
-        bullets = GameObject.Find("Bullets").GetComponent<TextMeshPro>();  
+        bullets = GameObject.Find("Bullets").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
         if (int.Parse(bullets.text) < 0)
         {
             Destroy(gameObject);

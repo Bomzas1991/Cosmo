@@ -17,6 +17,8 @@ public class BulletScript : MonoBehaviour
     public float bounce = 20f;
     public AudioClip Death;
 
+    public bool extraHeart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,6 @@ public class BulletScript : MonoBehaviour
 
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
         }
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
