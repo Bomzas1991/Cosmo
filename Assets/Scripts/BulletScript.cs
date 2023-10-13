@@ -14,6 +14,7 @@ public class BulletScript : MonoBehaviour
     public AudioClip LaserBullet;
     //public Animation Hit;
     public GameObject BulletHit;
+    public float bounce = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class BulletScript : MonoBehaviour
 
             Instantiate(BulletHit, transform.position, transform.rotation);
 
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
         }
             Destroy(gameObject);
     }
