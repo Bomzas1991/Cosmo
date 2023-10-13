@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip Death;
 
+    public GameObject Explosion;
     public GameObject End;
 
     // Start is called before the first frame update
@@ -52,7 +53,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
-            AudioSource.PlayClipAtPoint(Death, transform.position, 1);
+            AudioSource.PlayClipAtPoint(Death, transform.position, 3);
+            Instantiate(Explosion, transform.position, transform.rotation);
 
             Destroy(gameObject);
 

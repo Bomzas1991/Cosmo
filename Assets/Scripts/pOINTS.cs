@@ -9,9 +9,11 @@ public class pOINTS : MonoBehaviour
     public TextMeshPro Points;
     public TextMeshProUGUI AllPoints;
 
+    public GameObject Everything;
     private void Update()
     {
         AllPoints.text = Points.text;
+        Everything.SetActive(false);
     }
 
     public void PlayAgain()
