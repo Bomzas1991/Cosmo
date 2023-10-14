@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour
     public GameObject End;
 
     public GameObject Heart;
+    TextMeshPro liVes;
+    int lives;
 
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.visible = false;
         bullets = GameObject.Find("Bullets").GetComponent<TextMeshPro>();
+        liVes = GameObject.Find("lives").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
         transform.up = direction;
 
+        lives = int.Parse(liVes.text);
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
@@ -43,6 +48,16 @@ public class PlayerController : MonoBehaviour
         if (int.Parse(bullets.text) < 0)
         {
             Destroy(gameObject);
+            End.SetActive(true);
+        }
+
+        if (lives < 1)
+        {
+            AudioSource.PlayClipAtPoint(Death, transform.position, 5);
+            Instantiate(Explosion, transform.position, transform.rotation);
+
+            Destroy(gameObject);
+
             End.SetActive(true);
         }
     }
@@ -56,12 +71,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
-            AudioSource.PlayClipAtPoint(Death, transform.position, 5);
-            Instantiate(Explosion, transform.position, transform.rotation);
+            lives -= 1;
 
-            Destroy(gameObject);
-
-            End.SetActive(true);
+            liVes.text = lives.ToString();
         }
     }
 }
