@@ -13,6 +13,7 @@ public class MeteorScript : MonoBehaviour
 
     TextMeshPro points;
     int Points;
+    int PointsToGet = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,6 @@ public class MeteorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         transform.position = Vector3.MoveTowards(transform.position, Vector2.zero, speed * Time.deltaTime);
 
         timer += Time.deltaTime;
@@ -75,7 +75,7 @@ public class MeteorScript : MonoBehaviour
         if (collision.gameObject.name.Contains("Bullet"))
         {
             Points = int.Parse(points.text);
-            Points += 1;
+            Points += PointsToGet;
             points.text = Points.ToString();
             Destroy(gameObject);
         }
@@ -85,4 +85,5 @@ public class MeteorScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
