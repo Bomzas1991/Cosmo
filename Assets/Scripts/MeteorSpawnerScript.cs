@@ -60,6 +60,7 @@ public class MeteorSpawnerScript : MonoBehaviour
                 time = 1;
             }
         }
+
     }
 
     void Spawn()

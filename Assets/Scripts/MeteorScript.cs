@@ -13,13 +13,17 @@ public class MeteorScript : MonoBehaviour
 
     TextMeshPro points;
     int Points;
-    int PointsToGet = 1;
+    public int PointsToGet = 1;
+
+    PowerUpds doublePoint;
+    //public GameObject doublePointsa;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnPointQ();
         points = GameObject.Find("Points").GetComponent<TextMeshPro>();
+        //doublePoint = doublePointsa.GetComponent<PowerUpds>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,11 @@ public class MeteorScript : MonoBehaviour
             speed += 10;
             timer = 0;
         }
+
+        //if (doublePoint.doublePoints == true)
+        //{
+        //    PointsToGet *= 2;
+        //}
     }
 
     void SpawnPointQ()

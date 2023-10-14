@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8689969886506072518}
   m_Layer: 0
   m_Name: Meteor
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  PointsToGet: 1
 --- !u!58 &2762139875528217042
 CircleCollider2D:
   m_ObjectHideFlags: 0

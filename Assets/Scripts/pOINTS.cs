@@ -10,10 +10,17 @@ public class pOINTS : MonoBehaviour
     public TextMeshProUGUI AllPoints;
 
     public GameObject Everything;
+
+    public GameObject bullet;
+    BulletScript bulletSpeed;
     private void Update()
     {
         AllPoints.text = Points.text;
         Everything.SetActive(false);
+
+        bulletSpeed = bullet.GetComponent<BulletScript>();
+
+        bulletSpeed.speed = 5;
     }
 
     public void PlayAgain()

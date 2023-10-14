@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
 
     TextMeshPro bullets;
+    public TextMeshPro points;
+    public GameObject PowerUps;
 
     public AudioClip Death;
 
@@ -59,6 +61,15 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
 
             End.SetActive(true);
+        }
+
+        int point = int.Parse(points.text);
+
+        //doublePoints = GameObject.FindWithTag("Meteor").GetComponent<MeteorScript>();
+        if (point == 2)
+        {
+            PowerUps.SetActive(true);
+            point = 0;
         }
     }
 
