@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,24 +11,19 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
 
     TextMeshPro bullets;
-    public TextMeshPro points;
-    public GameObject PowerUps;
-
     public AudioClip Death;
 
     public GameObject Explosion;
     public GameObject End;
 
-    public GameObject Heart;
-    TextMeshPro liVes;
-    int lives;
+    public TextMeshPro points;
+    int score;
 
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.visible = false;
         bullets = GameObject.Find("Bullets").GetComponent<TextMeshPro>();
-        liVes = GameObject.Find("lives").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -40,8 +36,6 @@ public class PlayerController : MonoBehaviour
 
         transform.up = direction;
 
-        lives = int.Parse(liVes.text);
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
@@ -53,24 +47,7 @@ public class PlayerController : MonoBehaviour
             End.SetActive(true);
         }
 
-        if (lives < 1)
-        {
-            AudioSource.PlayClipAtPoint(Death, transform.position, 5);
-            Instantiate(Explosion, transform.position, transform.rotation);
 
-            Destroy(gameObject);
-
-            End.SetActive(true);
-        }
-
-        int point = int.Parse(points.text);
-
-        //doublePoints = GameObject.FindWithTag("Meteor").GetComponent<MeteorScript>();
-        if (point == 2)
-        {
-            PowerUps.SetActive(true);
-            point = 0;
-        }
     }
 
     void Shoot()
@@ -82,9 +59,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
-            lives -= 1;
+            AudioSource.PlayClipAtPoint(Death, transform.position, 5);
+            Instantiate(Explosion, transform.position, transform.rotation);
 
-            liVes.text = lives.ToString();
+            Destroy(gameObject);
+
+            End.SetActive(true);
         }
     }
 }

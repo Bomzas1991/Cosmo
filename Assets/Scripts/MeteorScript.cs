@@ -15,7 +15,6 @@ public class MeteorScript : MonoBehaviour
     int Points;
     public int PointsToGet = 1;
 
-    PowerUpds doublePoint;
     //public GameObject doublePointsa;
 
     // Start is called before the first frame update
@@ -35,7 +34,7 @@ public class MeteorScript : MonoBehaviour
 
         if (timer >= 10)
         {
-            speed += 10;
+            speed += 30;
             timer = 0;
         }
 
@@ -83,10 +82,10 @@ public class MeteorScript : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Bullet"))
         {
+            Destroy(gameObject);
             Points = int.Parse(points.text);
             Points += PointsToGet;
             points.text = Points.ToString();
-            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag.Contains("Player"))

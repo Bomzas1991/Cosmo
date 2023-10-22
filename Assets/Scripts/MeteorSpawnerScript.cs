@@ -13,6 +13,14 @@ public class MeteorSpawnerScript : MonoBehaviour
     public GameObject meteor2;
     public GameObject meteor3;
     public GameObject meteorBounce;
+    public BulletScript bulletScriopt;
+
+    private void Start()
+    {
+        bulletScriopt = bulletScriopt.GetComponent<BulletScript>();
+
+        bulletScriopt.speed = 5;
+    }
 
     void Update()
     {
@@ -61,6 +69,14 @@ public class MeteorSpawnerScript : MonoBehaviour
             }
         }
 
+        timer += Time.deltaTime;
+
+        if (timer >= 10)
+        {
+            MeteorScript speed = GetComponent<MeteorScript>();
+            speed.speed += 10;
+            timer = 0;
+        }
     }
 
     void Spawn()

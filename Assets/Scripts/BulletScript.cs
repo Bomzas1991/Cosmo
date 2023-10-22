@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class BulletScript : MonoBehaviour
@@ -18,12 +19,14 @@ public class BulletScript : MonoBehaviour
     public AudioClip Death;
 
     public bool extraHeart;
+    public TextMeshPro points;
 
     // Start is called before the first frame update
     void Start()
     {
         bulletsLeft = GameObject.Find("Bullets").GetComponent<TextMeshPro>();
-        
+        points = GameObject.Find("Points").GetComponent<TextMeshPro>();
+
         bullet = int.Parse(bulletsLeft.text);
         bullet -= 1;
         bulletsLeft.text = bullet.ToString();
@@ -31,6 +34,7 @@ public class BulletScript : MonoBehaviour
         //Hit = gameObject.GetComponent<Animation>();
 
         AudioSource.PlayClipAtPoint(LaserBullet, transform.position, 1);
+
     }
 
     // Update is called once per frame
@@ -42,20 +46,26 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name.Contains("Meteor"))
         {
+            AudioSource.PlayClipAtPoint(Death, transform.position, 2);
+            Instantiate(BulletHit, transform.position, transform.rotation);
+
             bullet = int.Parse(bulletsLeft.text);
             bullet += 1;
             bulletsLeft.text = bullet.ToString();
             //Hit.Play("BlueBulletHit");
 
-            AudioSource.PlayClipAtPoint(Death, transform.position, 2);
-            Instantiate(BulletHit, transform.position, transform.rotation);
 
+            //int poiont = int.Parse(points.text);
+            //poiont += 1;
+            //points.text = poiont.ToString();
 
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
         }

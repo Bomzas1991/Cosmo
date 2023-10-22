@@ -13,14 +13,25 @@ public class pOINTS : MonoBehaviour
 
     public GameObject bullet;
     BulletScript bulletSpeed;
+    private void Start()
+    {
+        bulletSpeed = bullet.GetComponent<BulletScript>();
+
+        bulletSpeed.speed = 5;
+
+    }
+
     private void Update()
     {
         AllPoints.text = Points.text;
         Everything.SetActive(false);
 
-        bulletSpeed = bullet.GetComponent<BulletScript>();
+        GameObject[] meteors = GameObject.FindGameObjectsWithTag("Meteor");
 
-        bulletSpeed.speed = 5;
+        foreach (GameObject meteor in meteors)
+        {
+            Destroy(meteor);
+        }
     }
 
     public void PlayAgain()
